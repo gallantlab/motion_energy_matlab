@@ -2,8 +2,12 @@ function params = preprocWavelets_grid_GetMetaParams(Arg)
 % Usage: params = preprocWavelets_grid_GetMetaParams(Arg)
 % 
 % Returns parameter set for a preprocWavelets_grid. The parameters
-% specified by Arg=1 and 2 are the natural movie stimuli in Nishimoto et
-% al 2011
+% specified by setting Arg to 2 are the parameters used to compute
+% motion energy in Nishimoto et al (2011); Arg = 1 is a similar model
+% with fewer channels that provides comparable results for modeling
+% fMRI data.
+%
+% See code for other parameter presets. 
 
 params = preprocWavelets_grid;
 params.argNum = Arg;
