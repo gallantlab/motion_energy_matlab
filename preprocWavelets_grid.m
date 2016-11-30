@@ -157,12 +157,6 @@ if nargin<1
     return;
 end
 
-if ischar(S)
-    % Recover matrix from reference matrix (used for recursive calls for
-    % color stimuli)
-    S = refmat_recover(S); 
-end 
-
 % Timing
 start_t = cputime;
 % Stimulus check
@@ -177,31 +171,10 @@ elseif length(stimxytsize)==4
     end
     nColorChannels = size(S,4);
     % Color stimuli; recursive call to process color channels separately
-    if numel(S)>100*100*100000 
-        % to save memory, store color channels into separate matrices on hard drive
-        Spreproc = [];
-        sstr = cell(nColorChannels,1);
-        for ci=1:nColorChannels
-            sstr{ci} = refmat_store(S(:,:,:,ci));
-        end
-        clear S;
-        for ci=1:length(nColorChannels)
-            [tstim p] = feval(params.class, sstr{ci}, params);
-            Spreproc = cat(2,Spreproc, tstim);
-            if params.verbose
-                fprintf('done with channel %d\n',ci);
-            end
-        end
-        % Cleanup
-        for ci=1:nColorChannels
-            refmat_clear(sstr{ci});
-        end
-    else
-        Spreproc = [];
-        for ci=1:nColorChannels
-            [tstim p] = feval(params.class, S(:,:,:,ci), params);
-            Spreproc = cat(2,Spreproc, tstim);
-        end
+    Spreproc = [];
+    for ci=1:nColorChannels
+        [tstim p] = feval(params.class, S(:,:,:,ci), params);
+        Spreproc = cat(2,Spreproc, tstim);
     end
     params = p;
     varargout{1} = Spreproc;

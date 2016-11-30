@@ -16,7 +16,7 @@ function varargout = preprocDownsample(S, params)
 %       .sampleSec = length in seconds of 1 sample of data (for fMRI, this
 %           is the TR or repetition time)
 %       .frameshifts = amount to shift frames; empty implies no shift
-%       .gaussParams = mean and standard deviation for Gaussian
+%       .gaussParams = standard deviation and temporal offset for Gaussian
 %           downsampling window
 % Output:
 %   Spp
@@ -26,7 +26,7 @@ dParams.dsType = 'box';
 dParams.imHz = 15;
 dParams.sampleSec = 2;
 dParams.frameshifts = []; % empty = no shift
-dParams.gaussParams = []; %[1,2]; % sigma,mean
+dParams.gaussParams = []; %[1,2]; % sigma, offset
 % Fill in default params
 if ~exist('params','var')
     params = struct;

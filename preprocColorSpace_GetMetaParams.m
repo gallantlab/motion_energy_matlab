@@ -4,9 +4,9 @@ params.class = 'preprocColorSpace';
 
 switch argNum
     case 1
-        % Default grayscale space
+        % Convert to L*A*B colorspace, keep luminance channel
         params.class = 'preprocColorSpace';
-        params.colorconv = 'LAB<-RGB';
+        params.colorconv = 'rgb2lab';
         params.colorchannels = 1;
         params.gamma = 1.0;
         params.verbose = true;

@@ -2,15 +2,14 @@ function varargout = preprocColorSpace(S, params)
 % Usage: [Spreproc, params] = preprocColorSpace(S, params)
 %
 % A script for switching between color spaces for color stimuli; relies on
-% colorspace2, written by Pascal Getreuer, and added to by Shinji Nishimoto
-% & Michael Oliver.
+% color functions in Matlab's ImageProcessing toolbox. 
 %
-% Created by SN 200X?
+% Created by SN 2009
 % Modified/commented by ML 2013.03.21
 
 % Default parameters
 dParams.class = 'preprocColorSpace';
-dParams.colorconv = 'YUV<-RGB';
+dParams.colorconv = 'rgb2lab'; % string name for matlab color function
 dParams.colorchannels = 1;
 dParams.gamma = 1.0;
 dParams.verbose = true;
@@ -38,7 +37,7 @@ framenum=size(S,4);
 for ii=1:framenum
     tim = squeeze(S(:,:,:,ii));
     tim = gammacorrect(tim, params.gamma);
-    cim = colorspace2(params.colorconv, tim);
+    cim = feval(params.colorconv, tim);
     cstim(:,:,ii,:) = single(cim(:,:,params.colorchannels));
     progressdot(ii,500,10000,framenum);
 end

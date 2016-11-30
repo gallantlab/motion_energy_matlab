@@ -18,9 +18,6 @@ function varargout = preprocNonLinearOut(S, params)
 %       .nonLinOutParam = []; % This needs filling in for certain options
 %                       of nonLinOutExp (e.g. for 'log', it specifies a
 %                       small delta to add to avoid log(0)= -inf
-%       .gainControl = []; BROKEN. Depends on preprocNonLinearIn, which is
-%                       not working. FIX ME.
-%       .gainControlOut = []; % BROKEN. See above.
 %       .verbose = T/F, verbose printing
 % 
 % Modified from SN code by ML 2013.03.21
@@ -28,8 +25,6 @@ function varargout = preprocNonLinearOut(S, params)
 % Default parameters
 dParams.class = 'preprocNonLinearOut';
 dParams.nonLinOutExp = 0.5; % Exponent to which to raise each value
-dParams.gainControl = []; % broken as of 2013.03; leave empty!
-dParams.gainControlOut = []; % broken as of 2013.03; leave empty!
 dParams.verbose = true;
 % Fill params w/ defaults
 if ~exist('params','var')
@@ -40,30 +35,6 @@ params = defaultOpt(params,dParams);
 if ~nargin
     varargout{1} = dParams;
     return
-end
-
-% Gain control: relies on previous stage of preprocessing, not (re-)
-% implemented yet! 
-if ~isempty(params.gainControlOut)
-    error('Gain control is not re-implemented in new version of code!')
-    % TO DO: 
-    % (1) fix preprocNonLinearIn
-    % (2) Find params.PP.PP...PP.class=='preprocNonLinearIn', take
-    % params.PP.lums / params.PP.cons from there
-    gcparams = params.gainControlOut;
-    if isfield(params,'verbose') && params.verbose
-        fprintf('Processing gain controls for output...\n');
-    end
-    for ii=1:size(S,2)
-        if isfield(gcparams, 'subtr') && ~isempty(gcparams.subtr)
-            rs = S(:,ii);
-            rs = procSubtractive(rs', gcparams.subtr);
-            if gcparams.subtr.zeroth
-                rs(rs<0) = 0;
-            end
-            S(:,ii) = rs;
-        end
-    end
 end
 
 if isfield(params,'verbose') && params.verbose
@@ -128,11 +99,3 @@ varargout{1} = S;
 if nargout>1
     varargout{2} = params;
 end
-
-function out = procSubtractive(rs, params)
-% for gain control; currently NOT implemented b/c of preprocNonLinearIn.m
-% being broken. FIX ME if you care!
-k = params.timecourse;
-rsa = conv2(rs, k, 'same');
-out = rs - rsa;
-

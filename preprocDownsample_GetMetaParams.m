@@ -6,43 +6,45 @@ function params = preprocDownsample_GetMetaParams(Arg)
 params.class = 'preprocDownsample';
 switch Arg
     case 1
-        % Simple box average
+        % Simple box average, for TR=1, imhz=15
         params.dsType = 'box';
-        params.imHz = 15;     
-        params.sampleSec = 2; 
+        params.imHz = 15;     % movie / image sequence frame rate
+        params.sampleSec = 1; % TR
         params.frameshifts = []; % empty = no shift
         params.gaussParams = []; %[1,2]; % sigma,mean
     case 2
-        % Gaussian downsampling
+        % Simple box average, for TR=2, imhz=15
+        params.dsType = 'box';
+        params.imHz = 15;     % movie / image sequence frame rate
+        params.sampleSec = 2; % TR
+        params.frameshifts = []; % empty = no shift
+        params.gaussParams = []; %[1,2]; % sigma,mean
+    case 3
+        % Gaussian downsampling, for TR=2, imhz=15
         params.dsType = 'gauss';
-        params.imHz = 15;
-        params.sampleSec = 2;
+        params.imHz = 15;     % movie / image sequence frame rate
+        params.sampleSec = 2; % TR
         params.frameshifts = []; % empty = no shift
         params.gaussParams = [1,2]; % mean, standard deviation
-    case 3
-        % Max downsampling 
-        params.dsType = 'max';
-        params.imHz = 15;
-        params.sampleSec = 2;
-        params.frameshifts = []; % empty = no shift
-        params.gaussParams = []; %[1,2]; % sigma,mean
-
     case 4
-        % Simple box average, w/ different stimulus presentation rate
-        params.dsType = 'box';
-        params.imHz = 24;     
-        params.sampleSec = 2; 
+        % Max downsampling, for TR=2, imhz=15
+        params.dsType = 'max';
+        params.imHz = 15;     % movie / image sequence frame rate
+        params.sampleSec = 2; % TR
         params.frameshifts = []; % empty = no shift
         params.gaussParams = []; %[1,2]; % sigma,mean
-    case 101
-        % SHADY: imHz SHOULD be read in from stimulus input, not specified
-        % as a parameter here. This is just a kloodge for the HCP data,
-        % for which the movies were presented at a different rate than we
-        % usually present (24 hz)
-        % Simple box average
+    case 5
+        % Simple box average, for TR=2, imhz=24
         params.dsType = 'box';
-        params.imHz = 24;     % These two values will be overwritten by stimulus 
-        params.sampleSec = 1; % parameters in Stimulus class input to preprocDownsample
+        params.imHz = 24;     % movie / image sequence frame rate
+        params.sampleSec = 2; % TR
+        params.frameshifts = []; % empty = no shift
+        params.gaussParams = []; %[1,2]; % sigma,mean
+    case 6
+        % Simple box average, for TR=1, imhz=24
+        params.dsType = 'box';
+        params.imHz = 24;     % movie / image sequence frame rate
+        params.sampleSec = 1; % TR
         params.frameshifts = []; % empty = no shift
         params.gaussParams = []; %[1,2]; % sigma,mean        
     otherwise
