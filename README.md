@@ -1,6 +1,6 @@
 # gallantlab/motion_energy_matlab
 
-![motion energy model](/demo/motionenergymatlab.png)
+![motion energy model](/demo/motionenergymatlab_s.png)
 motion_evergy_matlab is a software library to calculate motion or static energy features of visual stimuli (movies or images).
 
 
