@@ -26,8 +26,9 @@ It allows flexible specifications of filter array parameters, such as the highes
 
 For more details, please type ‘help [filename]’ (e.g.,):
 
+```
 >> help preprocWavelets_grid_GetMetaParams
-
+```
 
 
 ## REQUIREMENTS
@@ -39,7 +40,7 @@ For more details, please type ‘help [filename]’ (e.g.,):
 ## REFERENCES
 The original motion energy model was proposed by Watson and Ahumada (1985) and Adelson and Bergen (1985). The codes were written by Shinji Nishimoto (Nishimoto et al., 2011) and edited and commented by Mark Lescroart.
 
-Watson AB, Ahumada AJ Jr., Model of human visual-motion sensing. J Opt Soc Am A. 2(2):322-41. (1985)
-Adelson EH, Bergen JR., Spatiotemporal energy models for the perception of motion., J Opt Soc Am A. 2(2):284-99. (1985)
-Nishimoto S, Vu AT, Naselaris T, Benjamini Y, Yu B, Gallant JL., Reconstructing visual experiences from brain activity evoked by natural movies. Curr Biol. 21(19):1641-6. (2011)
+* Watson AB, Ahumada AJ Jr., Model of human visual-motion sensing. J Opt Soc Am A. 2(2):322-41. (1985)
+* Adelson EH, Bergen JR., Spatiotemporal energy models for the perception of motion., J Opt Soc Am A. 2(2):284-99. (1985)
+* Nishimoto S, Vu AT, Naselaris T, Benjamini Y, Yu B, Gallant JL., Reconstructing visual experiences from brain activity evoked by natural movies. Curr Biol. 21(19):1641-6. (2011)
 
