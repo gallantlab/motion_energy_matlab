@@ -5,7 +5,7 @@ motion_evergy_matlab is a software library to calculate motion or static energy 
 
 
 ## QUICKSTART/USAGE
-The codes accept movie/image stimulus inputs and return the energy feature outputs. To test the codes, please prepare the sample stimuli  (e.g., https://www.dropbox.com/s/svo55behbw3m1zy/nishimoto_2011_val_1min.mat?dl=0) and run ComputeMotionEnergy.m in MATLAB.
+The codes accept movie/image stimulus inputs and return the energy feature outputs. To test the codes, please prepare the sample stimuli  (e.g., https://www.dropbox.com/s/svo55behbw3m1zy/nishimoto_2011_val_1min.mat?dl=0) and run ComputeMotionEnergy.m in MATLAB:
 
 
 ```
@@ -32,7 +32,7 @@ For more details, please type ‘help [filename]’ (e.g.,):
 
 
 ## REQUIREMENTS
--	MATLAB 20xx or higher
+-	MATLAB
 -	Image Processing toolbox (for color conversion)
 
 
