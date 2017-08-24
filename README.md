@@ -1,17 +1,20 @@
 # gallantlab/motion_energy_matlab
 
-
+![motion energy model](/demo/motionenergymatlab.png)
 motion_evergy_matlab is a software library to calculate motion or static energy features of visual stimuli (movies or images).
 
 
 ## QUICKSTART/USAGE
-The codes accept movie/image stimulus inputs and return the energy feature outputs. To test the codes, please prepare the sample stimuli  and run ComputeMotionEnergy.m in MATLAB.
+The codes accept movie/image stimulus inputs and return the energy feature outputs. To test the codes, please prepare the sample stimuli  (e.g., https://www.dropbox.com/s/svo55behbw3m1zy/nishimoto_2011_val_1min.mat?dl=0) and run ComputeMotionEnergy.m in MATLAB.
+
 
 ```
 >> ComputeMotionEnergy;
 ```
 
+
 It allows flexible specifications of filter array parameters, such as the highest spatial frequency, the number of direction of motion, color channels to be used, etc. For example, if you want to load a default parameter set and specify the highest spatial and temporal frequency:
+
 
 ```
 >> gparams = preprocWavelets_grid_GetMetaParams(2); % load the default parameter set 2 (as in Nishimoto et al., 2011)
@@ -20,14 +23,17 @@ It allows flexible specifications of filter array parameters, such as the highes
 >> [S_gab, gparams] = preprocWavelets_grid(S_lum, gparams); % calculate the energy features of luminance pattern S_lum
 ```
 
+
 For more details, please type ‘help [filename]’ (e.g.,):
 
 >> help preprocWavelets_grid_GetMetaParams
 
 
+
 ## REQUIREMENTS
 -	MATLAB 20xx or higher
 -	Image Processing toolbox (for color conversion)
+
 
 
 ## REFERENCES
