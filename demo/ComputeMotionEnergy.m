@@ -3,10 +3,9 @@ do_followup_viz = true;
 % To run this demo, you will need a stack of movie frames stored as a 4D 
 % (X x Y x Color x Time) array. We have not included such an array in the
 % GitHub repository for space reasons, but you can download an array here:
-% https://drive.google.com/uc?export=download&id=0B_iniuUpMJoGNDFOOUxmTzBSejQ
+% https://www.dropbox.com/s/svo55behbw3m1zy/nishimoto_2011_val_1min.mat?dl=0
 % (These are the stimuli for the first minute of the validation data in
 % Nishmoto et al, 2011). 
-% NOTE: This file will eventually be moved to a more permanent web site
 % You will need to modify this path 
 fname = 'nishimoto_2011_val_1min.mat';
 
@@ -14,7 +13,8 @@ fname = 'nishimoto_2011_val_1min.mat';
 try
     d = load(fname);
 catch err_msg
-    fprintf('You may need to modify the "fname" variable in ComputeMotionEnergy.m\nto point to a .mat file with movie frames in it!\n')
+    fprintf('You may need to modify the "fname" variable in ComputeMotionEnergy.m\nto point to a .mat file with movie frames in it!\n' + ...
+        'A sample file can be downloaded at https://www.dropbox.com/s/svo55behbw3m1zy/nishimoto_2011_val_1min.mat?dl=0')
     throw(err_msg);
 end
 % the field d.S is an array that is (96 x 96 x 3 x 126); (X x Y x Color x

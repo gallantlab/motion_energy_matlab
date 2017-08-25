@@ -5,7 +5,7 @@ motion_energy_matlab is a software library to calculate motion or static energy 
 
 
 ## QUICKSTART/USAGE
-The codes accept movie/image stimulus inputs and return the energy feature outputs. To test the codes, please prepare the sample stimuli  (e.g., https://www.dropbox.com/s/svo55behbw3m1zy/nishimoto_2011_val_1min.mat?dl=0) and run ComputeMotionEnergy.m in MATLAB:
+The codes accept movie/image stimulus inputs and return the energy feature outputs. To test the codes, please prepare the sample stimuli in a 4D array of [X x Y x Color x Time], as in [this](https://www.dropbox.com/s/svo55behbw3m1zy/nishimoto_2011_val_1min.mat?dl=0) example data, and run ComputeMotionEnergy.m in MATLAB:
 
 
 ```
@@ -13,7 +13,7 @@ The codes accept movie/image stimulus inputs and return the energy feature outpu
 ```
 
 
-It allows flexible specifications of filter array parameters, such as the highest spatial frequency, the number of direction of motion, color channels to be used, etc. For example, if you want to load a default parameter set and specify the highest spatial and temporal frequency:
+The code allows flexible specifications of filter array parameters, such as the highest spatial frequency, the number of directions of motion, the number of scales of filters, etc. Image pre-processing and post-processing parameters (such as how to handle color channels) can be specified as well. Default values can be specified for all parameters. For example, if you want to load a default parameter set and then only specify the highest spatial and temporal frequency:
 
 
 ```
@@ -27,7 +27,7 @@ It allows flexible specifications of filter array parameters, such as the highes
 For more details, please type ‘help [filename]’ (e.g.,):
 
 ```
->> help preprocWavelets_grid_GetMetaParams
+>> help preprocWavelets_grid
 ```
 
 
