@@ -26,6 +26,12 @@ end
 if max(S(:))<1.1;
     S = S*255;
 end
+% Assure functions are available
+if exist(params.colorconv)~=2
+    error(['Selected color conversion function {%s} is not available in your matlab install!\n' ...
+           'Try using params.colorconv = ''rgb2gray'' or use params = preprocColorSpace_GetMetaParams(2)\n' ...
+           '(Or you may simply not have the image processing toolbox...)\n'], params.colorconv)
+end
 % color-space conversion
 if params.verbose; 
     disp(['Converting color space ... [' params.colorconv ']']); 
