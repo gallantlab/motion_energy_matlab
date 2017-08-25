@@ -5,7 +5,10 @@ motion_energy_matlab is a software library to calculate motion or static energy 
 
 
 ## QUICKSTART/USAGE
-The codes accept movie/image stimulus inputs and return the energy feature outputs. To test the codes, please prepare the sample stimuli in a 4D array of [X x Y x Color x Time], as in [this](https://www.dropbox.com/s/svo55behbw3m1zy/nishimoto_2011_val_1min.mat?dl=0) example data, and run ComputeMotionEnergy.m in MATLAB:
+The main functions accept movie/image stimulus inputs and return the energy feature outputs. To test the code, you can use one of two methods. Either: (1) Use the sample data we have provided ([click here to download](https://www.dropbox.com/s/svo55behbw3m1zy/nishimoto_2011_val_1min.mat?dl=0)). You should save the file somewhere on your Matlab path as `'nishimoto_2011_val_1min.mat'`. Or, (2) prepare your own set of movie frames in a 4D array of [X x Y x Color x Time]. For now, the code only supports square images (it may run for rectangular images, but the filters may be stretched and may give unexpected results). If you choose (2), you will need to change a line in `ComputeMotionEnergy.m`
+
+
+Then run ComputeMotionEnergy.m in MATLAB:
 
 
 ```
