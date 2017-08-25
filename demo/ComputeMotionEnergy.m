@@ -13,8 +13,8 @@ fname = 'nishimoto_2011_val_1min.mat';
 try
     d = load(fname);
 catch err_msg
-    fprintf('You may need to modify the "fname" variable in ComputeMotionEnergy.m\nto point to a .mat file with movie frames in it!\n' + ...
-        'A sample file can be downloaded at https://www.dropbox.com/s/svo55behbw3m1zy/nishimoto_2011_val_1min.mat?dl=0')
+    fprintf(['You may need to modify the "fname" variable in ComputeMotionEnergy.m\nto point to a .mat file with movie frames in it!\n' ...
+        'A sample file can be downloaded at https://www.dropbox.com/s/svo55behbw3m1zy/nishimoto_2011_val_1min.mat?dl=0'])
     throw(err_msg);
 end
 % the field d.S is an array that is (96 x 96 x 3 x 126); (X x Y x Color x
