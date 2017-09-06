@@ -19,17 +19,17 @@ switch Arg
         params.class = 'preprocWavelets_grid';
         params.show_or_preprocess = 1; % True to preprocess; false to return gabor channels
         params.verbose = 1;
-        params.gaborcachemode = 0;
+        params.gaborcachemode = 0; % whether or not to cache calculated results (could become faster)
         params.valid_w_index = NaN; % Select particular gabor channels by number
         % Temporal frequency params
         params.tfdivisions = 3; % Number of temporal frequencies; [tfmin...tfmax] or [0, tfmin...tfmax] if zerorf=1
         params.tfmax = 2.66667; % = 4hz @ 15 fps ([tfmax] cycles per [tsize] frames at 15 fps; 2.66667/10*15 = 4 Hz) 
         params.tfmin = 1.33333; % = 2hz @ 15 fps (1.33333/10*15 = 2 Hz)
-        params.tsize = 10;
-        params.tf_gaussratio = 10; 
-        params.tenv_max = 0.3000;
+        params.tsize = 10; % The size of temporal window (frames)
+        params.tf_gaussratio = 10; % temporal frequency to gauss envelope ratio of Gabor; bigger number = more waves (larger envelope)
+        params.tenv_max = 0.3000; % the maximum gaussian envelope size (relative to tsize)
         params.zerotf = 1; % Include 0 Hz (static) energy channels
-        params.f_gaussratio = .5;
+        params.f_gaussratio = .5; % frequency to gauss ratio of Gabor; obsolete
         % Orientation/direction params
         params.dirdivisions = 8;
         params.local_dc = 1; % T/F. Include circular gaussians (w/ no spat. freq.)
@@ -43,10 +43,10 @@ switch Arg
         params.sf_gaussratio = 0.6000; % 81 channels @maxsf=24; 9x9 ; 13x13 @maxsf=32
         params.fenv_mode = 0; % use same env for spatial & temporal gabors
         params.senv_max = 0.3000;
-        params.wrap_all = 0;
+        params.wrap_all = 0; % whether or not the filters cover the very edge of images
         % Handling phase
-        params.phasemode = 0; % Determines how to do phase (square & sum quadrature pairs, etc)
-        params.phasemode_sfmax = NaN; % No idea
+        params.phasemode = 0; % Determines how to do phase (square & sum quadrature pairs (i.e., energy), linear, rectified, etc)
+        params.phasemode_sfmax = NaN; % Calculate only energy channels (e.g., no linear channels) if sf exceeds this number.
         params.zeromean = 1;
     case 2
         % larger motion energy model 
