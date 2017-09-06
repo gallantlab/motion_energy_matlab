@@ -22,13 +22,13 @@ switch Arg
         params.gaborcachemode = 0;
         params.valid_w_index = NaN; % Select particular gabor channels by number
         % Temporal frequency params
-        params.tfdivisions = 3;
-        params.tfmax = 2.66667; % = 4hz @ 15 fps
-        params.tfmin = 1.33333; % = 2hz @ 15 fps
+        params.tfdivisions = 3; % Number of temporal frequencies; [tfmin...tfmax] or [0, tfmin...tfmax] if zerorf=1
+        params.tfmax = 2.66667; % = 4hz @ 15 fps ([tfmax] cycles per [tsize] frames at 15 fps; 2.66667/10*15 = 4 Hz) 
+        params.tfmin = 1.33333; % = 2hz @ 15 fps (1.33333/10*15 = 2 Hz)
         params.tsize = 10;
         params.tf_gaussratio = 10; 
         params.tenv_max = 0.3000;
-        params.zerotf = 1;
+        params.zerotf = 1; % Include 0 Hz (static) energy channels
         params.f_gaussratio = .5;
         % Orientation/direction params
         params.dirdivisions = 8;
