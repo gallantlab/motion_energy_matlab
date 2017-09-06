@@ -1,23 +1,19 @@
 %% Setup
 do_followup_viz = true;
 % To run this demo, you will need a stack of movie frames stored as a 4D 
-% (X x Y x Color x Time) array. We have not included such an array in the
-% GitHub repository for space reasons, but you can download an array here:
-% https://www.dropbox.com/s/svo55behbw3m1zy/nishimoto_2011_val_1min.mat?dl=0
-% (These are the stimuli for the first minute of the validation data in
-% Nishmoto et al, 2011). 
-% You will need to modify this path 
-fname = 'nishimoto_2011_val_1min.mat';
+% (X x Y x Color x Time) array.
+% If you have your own stimuli, you will need to modify this variable:
+fname = 'nishimoto_2011_val_1min_uint8.mat';
 
 %% Load images
 try
     d = load(fname);
 catch err_msg
     fprintf(['You may need to modify the "fname" variable in ComputeMotionEnergy.m\nto point to a .mat file with movie frames in it!\n' ...
-        'A sample file can be downloaded at https://www.dropbox.com/s/svo55behbw3m1zy/nishimoto_2011_val_1min.mat?dl=0\n'])
+        'A sample file can be downloaded at https://www.dropbox.com/s/1531dr5u7767wat/nishimoto_2011_val_1min_uint8.mat?dl=0\n'])
     throw(err_msg);
 end
-% the field d.S is an array that is (96 x 96 x 3 x 126); (X x Y x Color x
+% the field d.S is an array that is (96 x 96 x 3 x 900); (X x Y x Color x
 % Images).  The images are stored as 8-bit integer arrays (no decimal
 % places, with pixel values from 0-255). These should be converted to
 % floating point decimals from 0-1:
@@ -63,6 +59,7 @@ if do_followup_viz
     disp('Final matrix size (images x features):')
     disp(size(S_fin));
     % show image of feature matrix
+    figure(1);clf;
     imagesc(S_fin);
     ylabel('Time (TR)')
     xlabel('Gabor wavelet feature')
@@ -78,11 +75,11 @@ if do_followup_viz
     caxis([-1,1])
     axis image off
     title('150th Gabor filter')
-    % 1220th Gabor wavelet
+    % 1219th Gabor wavelet
     subplot(122);
     imagesc(gab(:,:,1,1219));
     caxis([-1,1])
     axis image off
-    title('1221th Gabor filter')
+    title('1219th Gabor filter')
     colormap(gray)
 end
