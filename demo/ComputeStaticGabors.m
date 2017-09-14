@@ -1,3 +1,9 @@
+% add relevant paths
+if ~exist('preprocColorSpace_GetMetaParams','file')
+    addpath('../');
+    addpath('../utils/');
+end
+
 % Load images
 
 d = load('NaselarisStansburyGallant_2012_ValImages.mat');
