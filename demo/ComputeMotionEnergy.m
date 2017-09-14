@@ -5,6 +5,12 @@ do_followup_viz = true;
 % If you have your own stimuli, you will need to modify this variable:
 fname = 'nishimoto_2011_val_1min_uint8.mat';
 
+% add relevant paths
+if ~exist('preprocColorSpace_GetMetaParams','file')
+    addpath('../');
+    addpath('../utils/');
+end
+
 %% Load images
 try
     d = load(fname);
